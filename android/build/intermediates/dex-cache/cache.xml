@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/ramitsuri/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="true"
+        revision="24.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/home/ramitsuri/Documents/androidProjects/Mashup/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.7_d2e1e4ee57abd39b866543c32942111763725ac4/classes.dex" />
+    </item>
+
+</items>
