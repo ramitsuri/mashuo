@@ -19,7 +19,7 @@ public class IoTActivity extends AppCompatActivity {
         String layout = getIntent().getStringExtra(MainActivity.LAYOUT_EXTRA);
         Gson gson = new Gson();
         gson.toJson(layout);
-        
+
         Button buttonNew = new Button(this);
         buttonNew.setText("New");
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout1);
