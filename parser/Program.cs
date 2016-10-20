@@ -11,8 +11,11 @@ namespace MashupParser
     class Program
     {
         static void Main(string[] args)
-        {            
-            string fileName = args[0];
+        {
+            string fileName = "";
+            if (args.Length > 0)                
+                fileName = args[0];
+            fileName = "https://raw.githubusercontent.com/ramitsuri/ClipSave/master/app/src/main/res/layout/activity_sqltest.xml";
             List<Activity> activities = GetParsedActivityFromFile(fileName);
             string activitiesJSON = JsonConvert.SerializeObject(activities);
             Console.WriteLine(activitiesJSON);
@@ -24,45 +27,35 @@ namespace MashupParser
             List<Activity> activities = new List<Activity>();
             XmlTextReader reader = new XmlTextReader(fileName);
             while (reader.Read())
-            {                
-                switch (reader.NodeType)
+            {    if(reader.NodeType == XmlNodeType.Element)
                 {
-                    case XmlNodeType.Element:                         
-                        if (reader.Name == View.TYPE_BUTTON)
+                    if (reader.Name == View.TYPE_BUTTON)
+                    {
+                        Activity activity = new Activity();
+                        activity.type = View.TYPE_BUTTON_PARSED;
+                        while (reader.MoveToNextAttribute())
                         {
-                            Activity activity = new Activity();
-                            activity.type = View.TYPE_BUTTON_PARSED;
-                            while (reader.MoveToNextAttribute())
-                            {
-                                if (reader.Name == View.ATTRIBUTE_TEXT)
-                                    activity.text = reader.Value;
-                                if (reader.Name == View.ATTRIBUTE_ACTION)
-                                    activity.action = reader.Value;                                
-                            }
-                            activities.Add(activity);
+                            if (reader.Name == View.ATTRIBUTE_TEXT)
+                                activity.text = reader.Value;
+                            if (reader.Name == View.ATTRIBUTE_ACTION)
+                                activity.action = reader.Value;
                         }
-                                                
-                        if (reader.Name == View.TYPE_TEXTVIEW)
+                        activities.Add(activity);
+                    }
+
+                    if (reader.Name == View.TYPE_TEXTVIEW)
+                    {
+                        Activity activity = new Activity();
+                        activity.type = View.TYPE_TEXTVIEW_PARSED;
+                        activity.action = "";
+                        while (reader.MoveToNextAttribute())
                         {
-                            Activity activity = new Activity();
-                            activity.type = View.TYPE_TEXTVIEW_PARSED;
-                            activity.action = "";
-                            while (reader.MoveToNextAttribute())
-                            {
-                                if (reader.Name == View.ATTRIBUTE_TEXT)
-                                    activity.text = reader.Value;
-                            }
-                            activities.Add(activity);
-                        }                        
-                        break;
-                    case XmlNodeType.Text: 
-                        Console.WriteLine(reader.Value);
-                        break;
-                    case XmlNodeType.EndElement: 
-                        Console.Write("</" + reader.Name);
-                        Console.WriteLine(">");
-                        break;
-                }                
+                            if (reader.Name == View.ATTRIBUTE_TEXT)
+                                activity.text = reader.Value;
+                        }
+                        activities.Add(activity);
+                    }
+                }                             
             }
             return activities;   
         }
