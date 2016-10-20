@@ -11,9 +11,8 @@ namespace MashupParser
     class Program
     {
         static void Main(string[] args)
-        {
-            Console.WriteLine("Enter the path of the file to parse");
-            string fileName = Console.ReadLine();
+        {            
+            string fileName = args[0];
             List<Activity> activities = GetParsedActivityFromFile(fileName);
             string activitiesJSON = JsonConvert.SerializeObject(activities);
             Console.WriteLine(activitiesJSON);
