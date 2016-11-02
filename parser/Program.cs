@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,36 @@ namespace MashupParser
     {
         static void Main(string[] args)
         {
-            string fileName = "";
-            if (args.Length > 0)                
-                fileName = args[0];
-            fileName = "https://raw.githubusercontent.com/ramitsuri/ClipSave/master/app/src/main/res/layout/activity_sqltest.xml";
-            List<Activity> activities = GetParsedActivityFromFile(fileName);
-            string activitiesJSON = JsonConvert.SerializeObject(activities);
-            Console.WriteLine(activitiesJSON);
+            if (args.Length != 2)
+                Environment.Exit(0);
+            RunMode runMode = RunMode.Remote;
+            string fileName = "https://raw.githubusercontent.com/ramitsuri/ClipSave/master/app/src/main/res/layout/activity_sqltest.xml";
+            string projectDir = "C:\\Users\\ramitsuri\\Documents\\Projects\\mashup\\android"; 
+            if (args[0] == "0")
+            {
+                runMode = RunMode.Local;
+                projectDir = args[1];
+                string[] layoutDirs = Directory.GetDirectories(projectDir, "layout", SearchOption.AllDirectories);
+                List<string> layoutFiles = new List<string>();
+                foreach (string dir in layoutDirs)
+                {
+                    string[] files = Directory.GetFiles(dir, "*.xml", SearchOption.AllDirectories);
+                    layoutFiles.AddRange(files);
+                }
+                foreach(string layoutFile in layoutFiles)
+                {
+                    List<Activity> activities = GetParsedActivityFromFile(fileName);
+                    string activitiesJSON = JsonConvert.SerializeObject(activities);
+                    Console.WriteLine(layoutFile +  " \n" +  activitiesJSON + " \n\n");
+                }
+            }
+            else
+            {
+                fileName = args[1];
+                List<Activity> activities = GetParsedActivityFromFile(fileName);
+                string activitiesJSON = JsonConvert.SerializeObject(activities);
+                Console.WriteLine(activitiesJSON);
+            }           
             Console.Read();                      
         }
 
