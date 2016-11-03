@@ -31,7 +31,7 @@ namespace MashupParser
                 }
                 foreach(string layoutFile in layoutFiles)
                 {
-                    List<Activity> activities = GetParsedActivityFromFile(fileName);
+                    List<Activity> activities = GetParsedActivityFromFile(layoutFile);
                     string activitiesJSON = JsonConvert.SerializeObject(activities);
                     Console.WriteLine(layoutFile +  " \n" +  activitiesJSON + " \n\n");
                 }
@@ -41,9 +41,9 @@ namespace MashupParser
                 fileName = args[1];
                 List<Activity> activities = GetParsedActivityFromFile(fileName);
                 string activitiesJSON = JsonConvert.SerializeObject(activities);
-                Console.WriteLine(activitiesJSON);
+                Console.WriteLine(fileName + " \n" + activitiesJSON + " \n\n");
             }           
-            Console.Read();                      
+            //Console.Read();                      
         }
 
         private static List<Activity> GetParsedActivityFromFile(string fileName)

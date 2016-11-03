@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -46,6 +47,11 @@ public class IoTActivity extends AppCompatActivity {
                     }
                 });
             }
+            else if(item.getType() == Item.TYPE_TEXTVIEW){
+                TextView textView = new TextView(this);
+                textView.setText(item.getText());
+                linearLayout.addView(textView);
+            }
         }
     }
 
@@ -56,7 +62,7 @@ public class IoTActivity extends AppCompatActivity {
             return executeRestCall(strings[0]);
         }
         protected void onPostExecute(String result) {
-            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
         }
     }
 

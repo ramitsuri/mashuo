@@ -7,6 +7,7 @@ package com.ramitsuri.mashup;
 public class Item {
 
     public static int TYPE_BUTTON = 0;
+    public static int TYPE_TEXTVIEW = 1;
 
     private int type;
     private String text;
