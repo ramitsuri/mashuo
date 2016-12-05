@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "720395009536",
+    "firebase_url": "https://iotlibrary-44132.firebaseio.com",
+    "project_id": "iotlibrary-44132",
+    "storage_bucket": "iotlibrary-44132.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720395009536:android:57407b64fe57d185",
+        "android_client_info": {
+          "package_name": "com.ramitsuri.iotactivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720395009536-tr218p25inms98t1cv52r8kqe83oe2v7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO3Ft6_nwTfJb47YE5ZmYednE-kuPEp4c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720395009536:android:de07363c47b24338",
+        "android_client_info": {
+          "package_name": "com.ramitsuri.iotactivitylibrary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720395009536-tr218p25inms98t1cv52r8kqe83oe2v7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO3Ft6_nwTfJb47YE5ZmYednE-kuPEp4c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
